@@ -8,5 +8,5 @@ from .views import GetStays, TestConnection
 
 urlpatterns = [
     path('', TestConnection.as_view(), name='connectionCheck'),
-    path('get-available-stays', GetStays.as_view(), name='get-available-stays'),
+    path('get-available-rooms', GetStays.as_view(), name='get-available-rooms'),
 ]
