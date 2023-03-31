@@ -7,4 +7,4 @@ class Stay(models.Model):
     adultsNum = models.IntegerField(default=1)
     childrenNum = models.IntegerField(default=0)
     roomName = models.CharField(max_length=100)
-    couponCode = models.CharField(max_length=100, blank=True, default=None)
+    couponCode = models.CharField(max_length=100, blank=True, null=True)

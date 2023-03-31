@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -100,6 +101,66 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+log_dir = os.path.abspath('./log')
+if log_dir and not os.path.exists(log_dir):
+    os.mkdir(log_dir)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s.%(msecs)03d|%(levelname)s|%(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S',
+        },
+        'short': {
+            'format': '%(asctime)s.%(msecs)03d|%(levelname)s|%(module)s.%(funcName)s|%(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S',
+        },
+        'data': {
+            'format': '%(asctime)s.%(msecs)03d|%(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S',
+        },
+    },
+    'handlers': {
+        'file_fatal': {
+            'level': 'CRITICAL',  # data
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(log_dir, 'fatal_data.log').replace('\\', '/'),
+            'formatter': 'standard',
+        },
+        'file_error': {
+            'level': 'DEBUG',  # internal
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(log_dir, 'error_internal.log').replace('\\', '/'),
+            'formatter': 'standard',
+        },
+        'file_info': {
+            'level': 'INFO',  # API called success
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(log_dir, 'info.log').replace('\\', '/'),
+            'formatter': 'standard',
+        }
+    },
+    'loggers': {
+        'main': {
+            'handlers': ['file_info'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'data': {
+            'handlers': ['file_fatal'],
+            'level': 'CRITICAL',
+            'propagate': True,
+        },
+        'internal': {
+            'handlers': ['file_error'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    }
+}
 
 
 # Internationalization
