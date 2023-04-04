@@ -50,7 +50,21 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # fixed cors error
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTTokenUserAuthentication',
+    )
+}
+
+SIMPLE_JWT = {"SIGNING_KEY": "5ahp8kseKOVB_w"}
 
 ROOT_URLCONF = 'controller.urls'
 
@@ -173,6 +187,15 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000', # or whatever the origin of your request is
+]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000'
+]
 
 
 # Static files (CSS, JavaScript, Images)

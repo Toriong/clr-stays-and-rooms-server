@@ -8,8 +8,6 @@ from .customClasses import ResponseBodyGetStays
 from .services import roomsServices
 from .generalFns.generalFns import makeDateTimeZoneAware
 
-# Create your views here.
-
 
 class TestConnection(APIView):
 
