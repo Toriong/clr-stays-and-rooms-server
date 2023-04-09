@@ -6,5 +6,5 @@ class RoomReqBodyData(TypedDict):
     amenities: List[str]
 
 class RoomReqInfo(RoomReqBodyData):
-    name: str
+    request_name: str
 
