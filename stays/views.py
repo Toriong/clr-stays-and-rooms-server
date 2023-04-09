@@ -1,16 +1,8 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
-# import httpResponse and jsonResponse
 from django.http import HttpResponse, JsonResponse
-from .models import Stay
-from typing import TypedDict
-from .customClasses import ResponseBodyGetStays
 from .services import rooms_services
 from .generalFns.generalFns import makeDateTimeZoneAware
-from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import authentication_classes
 
 
 class TestConnection(APIView):
@@ -47,19 +39,7 @@ class GetUserReservations(APIView):
         return JsonResponse({ "msg": "Past, present, and future reservations were received." })
 
 
-class Rooms(APIView):
-    
 
-    def post(self, request, *args, **kwargs) -> JsonResponse:
-
-
-        return JsonResponse({ "msg":"New rooms were added to the database."})
-    
-
-    def post(self, request, *args, **kwargs) -> JsonResponse:
-
-
-        return JsonResponse({ "msg": "Target rooms were updated." })
         
         
 

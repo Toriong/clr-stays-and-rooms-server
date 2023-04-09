@@ -18,5 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('stays/', include('stays.urls'))
+    path('stays/', include('stays.urls')),
+    path('admin-edit-rooms/', include('clrAdmins.urls')),
+    path('admin-post-new-rooms/', include('clrAdmins.urls'))
 ]
