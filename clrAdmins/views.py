@@ -19,13 +19,18 @@ class Rooms(APIView):
     
 
     def put(self, request: HttpRequest) -> JsonResponse:
-        # GOAL: get the file from the request, store it onto the server, when done, delete immediately
-        # BRAIN DUMP:
-        # check if the user uploaded a file to the server 
+        print('request.data: ', request.data)
         reqInfo: RoomReqInfo = request.data
+        print('reqInfo: ', reqInfo)
+
+        # GOAL: when the user inserts a new photo for a room, perform the folllowing:
+        # insert the photo into aws bucket, get the id for the photo
+        # for the specific room, insert the id of the photo into the room model
 
         if reqInfo['request_name'] == 'add_photos':
             admin_rooms_services.upload_photos(request.FILES)
+
+            return JsonResponse({ "msg": "Updates occurred successfully. New photos were added to the room."})
 
 
         

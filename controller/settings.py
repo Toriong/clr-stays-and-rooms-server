@@ -29,8 +29,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+FILE_UPLOAD_HANDLERS = [
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler"
+]
 
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
