@@ -47,7 +47,18 @@ class GetUserReservations(APIView):
         return JsonResponse({ "msg": "Past, present, and future reservations were received." })
 
 
+class InsertRoomsIntoDatabase(APIView):
+    
 
+    def post(self, request, *args, **kwargs) -> JsonResponse:
+
+        return JsonResponse({ "msg":"New rooms were added to the database."})
+    
+
+    def post(self, request, *args, **kwargs) -> JsonResponse:
+
+
+        return JsonResponse({ "msg": "Target rooms were updated." })
         
         
 
