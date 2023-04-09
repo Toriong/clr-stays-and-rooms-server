@@ -23,13 +23,13 @@ ROOMS = [
 
 
 
-def getAvailableRooms(startDateQuery: datetime, endDateQuery: datetime) -> list[str]:
-    unavailableRooms = Stay.objects.filter(startDate__lte=endDateQuery, endDate__gte=startDateQuery)
+def get_available_rooms(start_date_query: datetime, end_date_query: datetime) -> list[str]:
+    unavailable_rooms = Stay.objects.filter(startDate__lte=end_date_query, endDate__gte=start_date_query)
 
-    if len(unavailableRooms) == 0:
+    if len(unavailable_rooms) == 0:
         return ROOMS
     
-    unavailableRoomNames = [room.roomName for room in unavailableRooms]
-    availableRooms = [room for room in ROOMS if room not in unavailableRoomNames]
+    unavailable_room_names = [room.roomName for room in unavailable_rooms]
+    available_rooms = [room for room in ROOMS if room not in unavailable_room_names]
 
-    return availableRooms
+    return available_rooms

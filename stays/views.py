@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from .models import Stay
 from typing import TypedDict
 from .customClasses import ResponseBodyGetStays
-from .services import roomsServices
+from .services import rooms_services
 from .generalFns.generalFns import makeDateTimeZoneAware
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -35,7 +35,7 @@ class GetAvailableRooms(APIView):
         startDateQuery: str = request.GET.get('startDate')
         endDateQuery: str = request.GET.get('endDate')
         totalGuests: int = int(request.GET.get('totalGuests'))
-        availableRooms = roomsServices.getAvailableRooms(makeDateTimeZoneAware(startDateQuery), makeDateTimeZoneAware(endDateQuery))
+        availableRooms = rooms_services.getAvailableRooms(makeDateTimeZoneAware(startDateQuery), makeDateTimeZoneAware(endDateQuery))
     
         return JsonResponse({'availableRooms': availableRooms}, status=200)
     
@@ -47,10 +47,11 @@ class GetUserReservations(APIView):
         return JsonResponse({ "msg": "Past, present, and future reservations were received." })
 
 
-class InsertRoomsIntoDatabase(APIView):
+class Rooms(APIView):
     
 
     def post(self, request, *args, **kwargs) -> JsonResponse:
+
 
         return JsonResponse({ "msg":"New rooms were added to the database."})
     
