@@ -29,7 +29,6 @@ def upload_photos(files: Dict[str, UploadedFile]) -> Upload_File_AWS_Result:
     except Exception as error:
         print("An error has occurred while uploading a photo to AWS S3: ", error)
 
-
         return Upload_File_AWS_Result(msg="An error has occurred while uploading a photo to AWS S3.", wasSuccessful=False)
     
 
