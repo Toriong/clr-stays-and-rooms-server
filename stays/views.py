@@ -27,7 +27,7 @@ class GetAvailableRooms(APIView):
         startDateQuery: str = request.GET.get('startDate')
         endDateQuery: str = request.GET.get('endDate')
         totalGuests: int = int(request.GET.get('totalGuests'))
-        availableRooms = rooms_services.getAvailableRooms(makeDateTimeZoneAware(startDateQuery), makeDateTimeZoneAware(endDateQuery))
+        availableRooms = rooms_services.get_available_rooms(makeDateTimeZoneAware(startDateQuery), makeDateTimeZoneAware(endDateQuery))
     
         return JsonResponse({'availableRooms': availableRooms}, status=200)
     

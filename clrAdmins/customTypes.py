@@ -8,3 +8,7 @@ class RoomReqBodyData(TypedDict):
 class RoomReqInfo(RoomReqBodyData):
     request_name: str
 
+
+class Upload_File_AWS_Result(TypedDict):
+    msg: str
+    wasSuccessful: bool

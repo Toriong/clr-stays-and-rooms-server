@@ -27,7 +27,7 @@ class Rooms(APIView):
         # insert the photo into aws bucket, get the id for the photo
         # for the specific room, insert the id of the photo into the room model
 
-        if reqInfo['request_name'] == 'add_photos':
+        if reqInfo['requestName'] == 'addPhotos':
             admin_rooms_services.upload_photos(request.FILES)
 
             return JsonResponse({ "msg": "Updates occurred successfully. New photos were added to the room."})
