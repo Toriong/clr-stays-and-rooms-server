@@ -15,6 +15,13 @@ ROOMS = [
     "FAMILY_2",
 ]
 
+# CASE: there are less than 5 people in the party. 
+# GOAL: don't get the dorm rooms or the family rooms 
+
+# GOAL: insert the json field into the database for the available rooms 
+
+
+
 
 def getAvailableRooms(startDateQuery: datetime, endDateQuery: datetime) -> list[str]:
     unavailableRooms = Stay.objects.filter(startDate__lte=endDateQuery, endDate__gte=startDateQuery)
