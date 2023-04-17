@@ -13,11 +13,6 @@ from ..customTypes import Upload_File_AWS_Result
 
 
 def add_rooms():
-    # GOAL: add new rooms to the database when the admin wants to add new ones
-
-    
-
-
     pass
 
 
@@ -32,8 +27,6 @@ def upload_photos(files: Dict[str, UploadedFile]) -> Upload_File_AWS_Result:
             aws_file_names.append(file_name)
             # save the file to the specific target room in the database (the room id is in the request data)
             aws_S3.meta.client.upload_fileobj(file, config('AWS_STORAGE_BUCKET_NAME'), file_name)
-
-        # input("Will delete files from aws. Check aws for the target file. Press enter to continue...")
         
         # for file_name in aws_file_names:
         #     aws_S3.Object(config('AWS_STORAGE_BUCKET_NAME'), file_name).delete()

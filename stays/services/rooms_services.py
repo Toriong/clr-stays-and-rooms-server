@@ -29,7 +29,7 @@ def get_available_rooms(start_date_query: datetime, end_date_query: datetime) ->
     if len(unavailable_rooms) == 0:
         return ROOMS
     
-    unavailable_room_names = [room.roomName for room in unavailable_rooms]
+    unavailable_room_names = [room.room_name for room in unavailable_rooms]
     available_rooms = [room for room in ROOMS if room not in unavailable_room_names]
 
     return available_rooms
